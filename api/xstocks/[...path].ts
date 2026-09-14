@@ -1,9 +1,12 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const path = (req.params?.path as string[])?.join('/') || '';
-  const query = req.url?.split('?')[1] || '';
-  const target = `https://api.xstocks.fi/api/v2/public/${path}${query ? `?${query}` : ''}`;
+  const url = new URL(req.url);
+  const pathname = url.pathname;
+  const queryString = url.search;
+  const prefix = '/api/xstocks';
+  const path = pathname.startsWith(prefix) ? pathname.slice(prefix.length).replace(/^\//, '') : '';
+  const target = `https://api.xstocks.fi/api/v2/public/${path}${queryString || ''}`;
 
   try {
     const controller = new AbortController();
