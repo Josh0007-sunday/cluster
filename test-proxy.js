@@ -5,6 +5,10 @@ proxy.on('proxyReq', (proxyReq) => {
   proxyReq.removeHeader('Origin');
   proxyReq.removeHeader('Referer');
 });
+const apiKey = process.env.HELUS_API_KEY || '';
 http.createServer((req, res) => {
-  proxy.web(req, res, { target: 'https://mainnet.helius-rpc.com/?api-key=3200c64d-9d5b-4975-9c12-d1ac26112a7b', changeOrigin: true });
+  const targetUrl = apiKey
+    ? `https://mainnet.helius-rpc.com/?api-key=${apiKey}`
+    : 'https://mainnet.helius-rpc.com/';
+  proxy.web(req, res, { target: targetUrl, changeOrigin: true });
 }).listen(5174);
