@@ -60,13 +60,10 @@ function TickerItem({ symbol, price, change24h }: { symbol: string; price: numbe
 }
 
 function TickerContent({ prices }: { prices: PriceData[] }) {
-  const items = [...prices, ...prices, ...prices, ...prices];
+  const items = [...prices, ...prices];
   return (
     <div
-      className="flex items-center whitespace-nowrap"
-      style={{
-        animation: "marquee 20s linear infinite",
-      }}
+      className="flex items-center whitespace-nowrap animate-marquee"
     >
       {items.map((p, i) => (
         <TickerItem key={`${p.symbol}-${i}`} {...p} />

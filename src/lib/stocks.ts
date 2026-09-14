@@ -1,6 +1,6 @@
 import type { SolanaStock, StockPrice, XStockAsset, ProofOfReserve } from '../types';
 
-const BASE = 'https://api.xstocks.fi/api/v2/public';
+const BASE = '/api/xstocks';
 
 const memCache = new Map<string, { data: unknown; expiry: number }>();
 
