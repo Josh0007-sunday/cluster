@@ -1,0 +1,100 @@
+import type { ChainMeta, ChainId } from '../types';
+import { isPaymasterEligible } from './cluster';
+
+export const CHAINS: Record<ChainId, ChainMeta> = {
+  solana: {
+    id: 'solana',
+    label: 'Solana',
+    kind: 'solana',
+    nativeGas: 'SOL',
+    paymasterEligible: false,
+    usdcMintOrAddress: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    badgeColor: '#9945FF',
+    badgeLetter: 'S',
+  },
+  ethereum: {
+    id: 'ethereum',
+    label: 'Ethereum',
+    kind: 'evm',
+    nativeGas: 'ETH',
+    paymasterEligible: true,
+    usdcMintOrAddress: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
+    badgeColor: '#627EEA',
+    badgeLetter: 'E',
+  },
+  base: {
+    id: 'base',
+    label: 'Base',
+    kind: 'evm',
+    nativeGas: 'ETH',
+    paymasterEligible: true,
+    usdcMintOrAddress: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913',
+    badgeColor: '#0052FF',
+    badgeLetter: 'B',
+  },
+  arbitrum: {
+    id: 'arbitrum',
+    label: 'Arbitrum',
+    kind: 'evm',
+    nativeGas: 'ETH',
+    paymasterEligible: true,
+    usdcMintOrAddress: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831',
+    badgeColor: '#28A0F0',
+    badgeLetter: 'A',
+  },
+  polygon: {
+    id: 'polygon',
+    label: 'Polygon PoS',
+    kind: 'evm',
+    nativeGas: 'POL',
+    paymasterEligible: false,
+    usdcMintOrAddress: '0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359',
+    badgeColor: '#8247E5',
+    badgeLetter: 'P',
+  },
+  sei: {
+    id: 'sei',
+    label: 'Sei',
+    kind: 'evm',
+    nativeGas: 'SEI',
+    paymasterEligible: false,
+    usdcMintOrAddress: '0xe15fC38F6D8c56aF07bbCBe3BAf5708A2Bf42392',
+    badgeColor: '#B23A48',
+    badgeLetter: 'i',
+  },
+  sonic: {
+    id: 'sonic',
+    label: 'Sonic',
+    kind: 'evm',
+    nativeGas: 'S',
+    paymasterEligible: false,
+    usdcMintOrAddress: '0x29219dd400f2Bf60E5a23d13Be72B486D4038894',
+    badgeColor: '#1B1B1F',
+    badgeLetter: 'S',
+  },
+  unichain: {
+    id: 'unichain',
+    label: 'Unichain',
+    kind: 'evm',
+    nativeGas: 'ETH',
+    paymasterEligible: false,
+    usdcMintOrAddress: '0x078D782b760474a361dDA0AF3839290b0EF57AD6',
+    badgeColor: '#FF007A',
+    badgeLetter: 'U',
+  },
+  worldchain: {
+    id: 'worldchain',
+    label: 'World Chain',
+    kind: 'evm',
+    nativeGas: 'ETH',
+    paymasterEligible: false,
+    usdcMintOrAddress: '0x79A02482A880bCe3F13E09da970dC34dB4cD24D1',
+    badgeColor: '#0A0A0A',
+    badgeLetter: 'W',
+  },
+};
+
+export const CHAIN_LIST = Object.values(CHAINS);
+
+export const gasLabelFor = (id: ChainId) =>
+  isPaymasterEligible(id) ? `${CHAINS[id].nativeGas} · USDC Paymaster ready` : 'SOL gas';

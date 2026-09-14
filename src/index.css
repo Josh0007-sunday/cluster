@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-25%); }
+}
+
+@font-face {
+  font-family: 'Hero';
+  src: url('./assets/font/OTF/Hero-Regular.otf') format('opentype'),
+    url('./assets/font/TTF/Hero-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hero';
+  src: url('./assets/font/OTF/Hero-Bold.otf') format('opentype'),
+    url('./assets/font/TTF/Hero-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hero';
+  src: url('./assets/font/OTF/Hero-Light.otf') format('opentype'),
+    url('./assets/font/TTF/Hero-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+.font-hero {
+  font-family: 'Hero', sans-serif;
+}
+
+@theme {
+  --color-bg: #0f171a;
+  --color-card: #1c2427;
+  --color-card-hover: #232d31;
+  --color-border: #263035;
+  --color-accent: #4FD1E8;
+  --color-text: #ffffff;
+  --color-text-muted: #7a8a8f;
+  --color-text-dim: #4a5a5f;
+}
+
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
